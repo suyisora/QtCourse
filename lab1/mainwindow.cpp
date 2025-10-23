@@ -23,18 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
     foreach(auto btn,digitBTNs){
         connect(btn,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
     }
-
-    // connect(ui->btnNum0,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum1,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum2,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum3,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum4,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum5,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum6,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum7,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum8,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-    // connect(ui->btnNum9,SIGNAL(clicked()),this,SLOT(btnNumClicked()));
-
     connect(ui->btnMultable,SIGNAL(clicked()),this,SLOT(btnBinaryOperatorClicked()));
     connect(ui->btndivision,SIGNAL(clicked()),this,SLOT(btnBinaryOperatorClicked()));
     connect(ui->btnPlus,SIGNAL(clicked()),this,SLOT(btnBinaryOperatorClicked()));
@@ -262,11 +250,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         QMainWindow::keyPressEvent(event); // 其他按键交给父类处理
         break;
     }
-    // if(event -> key() == Qt::Key_0)
-    //     ui->btnNum0->animateClick();
-    // else if (event -> key() == Qt::Key_1)
-    //     ui->btnNum1->animateClick();
-
 }
 
 

@@ -17,19 +17,19 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>计算器_周宇聪_2023414290243</string>
+   <string>计算器_周锐铖_202341429024</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton{
 	font: 11pt &quot;Lucida Sans Unicode&quot;;
-	background-color: rgb(255,255,224);
+	background-color: rgb(255,200,224);
 	font-size: 15pt;
 	color: black;
 	border-radius: 10px;
 }
 
 QPushButton:hover{
-	background-color: rgb(255,239,213);
+	background-color: rgb(255,199,213);
 	color: black;
 }
 
@@ -188,9 +188,16 @@ QLineEdit{
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Lucida Sans Unicode</family>
+          <pointsize>15</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">font: 9pt &quot;Microsoft Tai Le&quot;;
-background-color:rgb(0,255,255)</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>=</string>
