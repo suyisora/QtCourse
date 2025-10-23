@@ -137,15 +137,17 @@ void MainWindow::btnBinaryOperatorClicked()
 {
     QString opcode = qobject_cast<QPushButton *>(sender())->text();
 
+    // 如果当前有输入的操作数，先加入到操作数栈中
     if(operand != ""){
         operands.push_back(operand);
         operand = "";
+    }
 
+    // 即使没有当前输入的操作数，只要栈中有上一次的计算结果，就存储当前运算符
+    if(!operands.isEmpty()){
         opcodes.push_back(opcode);
-
-
-        QString result = caculation();
-        ui->display->setText(result);
+        // 显示上一次的计算结果（作为新计算的第一个操作数）
+        ui->display->setText(operands.back());
     }
 }
 
