@@ -55,34 +55,37 @@ MainWindow::~MainWindow()
 QString MainWindow::caculation(bool *ok)
 {
     double result = 0;
-    if(operands.size() == 2 && opcodes.size() > 0){
-    //取操作数
-    double operand1 = operands.front().toDouble();
-    operands.pop_front();
-    double operand2 = operands.front().toDouble();
-    operands.pop_front();
+    if (operands.size() >= 2 && !opcodes.isEmpty()) { // 允许 >=2 避免边界问题
+        // 取操作数（按输入顺序计算，从左到右）
+        double operand1 = operands.front().toDouble();
+        operands.pop_front();
+        double operand2 = operands.front().toDouble();
+        operands.pop_front();
 
+        // 取运算符
+        QString op = opcodes.front();
+        opcodes.pop_front();
 
-    //取操作符
-    QString op = opcodes.front();
-    opcodes.pop_front();
+        // 计算逻辑
+        if (op == "+") {
+            result = operand1 + operand2;
+        } else if (op == "-") {
+            result = operand1 - operand2;
+        } else if (op == "×") {
+            result = operand1 * operand2;
+        } else if (op == "÷") {
+            if (operand2 == 0) {
+                if (ok) *ok = false;
+                return "Error"; // 处理除零错误
+            }
+            result = operand1 / operand2;
+        }
 
-    if(op == "+"){
-        result = operand1 + operand2;
-    }else if(op == "-"){
-        result = operand1 - operand2;
-    }else if(op == "×"){
-        result = operand1 * operand2;
-    }else if(op == "÷"){
-        result = operand1 / operand2;
-    }
-
-
-    operands.push_back(QString::number(result));
-
-        ui->statusbar->showMessage(QString("caculation is in process:operand is %1,opcode is %2").arg(operands.size()).arg(opcodes.size()));
-    }else{
-        ui->statusbar->showMessage(QString("operand is %1,opcode is %2").arg(operands.size()).arg(opcodes.size()));
+        // 结果入栈（作为下一次运算的第一个操作数）
+        operands.push_back(QString::number(result));
+        ui->statusbar->showMessage("计算完成: " + QString::number(result));
+    } else {
+        ui->statusbar->showMessage("操作数或运算符不足");
     }
 
     return QString::number(result);
@@ -134,18 +137,24 @@ void MainWindow::on_C_clicked()
 
 void MainWindow::btnBinaryOperatorClicked()
 {
-    QString opcode = qobject_cast<QPushButton *>(sender())->text();
+    QString newOpcode = qobject_cast<QPushButton *>(sender())->text();
 
-    // 如果当前有输入的操作数，先加入到操作数栈中
-    if(operand != ""){
+    // 1. 将当前输入的操作数入栈（如果有）
+    if (!operand.isEmpty()) {
         operands.push_back(operand);
-        operand = "";
+        operand.clear();
     }
 
-    // 即使没有当前输入的操作数，只要栈中有上一次的计算结果，就存储当前运算符
-    if(!operands.isEmpty()){
-        opcodes.push_back(opcode);
-        // 显示上一次的计算结果（作为新计算的第一个操作数）
+    // 2. 若已有足够的操作数和运算符，先计算上一次的结果
+    // （例如 "1+2" 后按 "+"，此时计算 1+2=3，结果作为下一次运算的第一个操作数）
+    if (operands.size() >= 2 && !opcodes.isEmpty()) {
+        caculation(); // 计算后 operands 中会只剩一个结果值
+    }
+
+    // 3. 存储新的运算符，用于下一次运算
+    if (!operands.isEmpty()) {
+        opcodes.push_back(newOpcode);
+        // 显示当前结果（作为下一次运算的第一个操作数）
         ui->display->setText(operands.back());
     }
 }
@@ -180,13 +189,26 @@ void MainWindow::btnUnaryOperatorClicked()
 
 void MainWindow::on_btnequal_clicked()
 {
-    if(operand != ""){
+    // 1. 将当前输入的操作数入栈（如果有）
+    if (!operand.isEmpty()) {
         operands.push_back(operand);
-        operand = "";
+        operand.clear();
     }
 
-    QString result = caculation();
-    ui->display->setText(result);
+    // 2. 计算所有剩余的运算（支持多步连续运算）
+    while (operands.size() >= 2 && !opcodes.isEmpty()) {
+        caculation();
+    }
+
+    // 3. 显示最终结果，并将结果作为下一次运算的起始值
+    if (!operands.isEmpty()) {
+        operand = operands.back(); // 保留结果用于后续运算
+        ui->display->setText(operand);
+        operands.clear(); // 清空栈，避免影响下一次运算
+    } else {
+        operand = "0";
+        ui->display->setText(operand);
+    }
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
