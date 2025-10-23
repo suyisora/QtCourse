@@ -109,8 +109,15 @@ void MainWindow::btnNumClicked()
 
 void MainWindow::on_btnPoint_clicked()
 {
-    if(!operand.contains("."))
-        operand+=qobject_cast<QPushButton *>(sender())->text();
+    if(!operand.contains(".")) {
+        // 检查 sender() 是否存在，如果不存在则直接添加小数点
+        QPushButton *btn = qobject_cast<QPushButton *>(sender());
+        if(btn) {
+            operand += btn->text();
+        } else {
+            operand += ".";
+        }
+    }
     ui->display->setText(operand);
 }
 
@@ -220,6 +227,41 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         }
     }
 
+    // 运算符键处理
+    switch(event->key()) {
+    case Qt::Key_Plus:
+        ui->btnPlus->animateClick();  // 加号
+        break;
+    case Qt::Key_Minus:
+        ui->btnminus->animateClick(); // 减号
+        break;
+    case Qt::Key_Asterisk:
+    case Qt::Key_multiply:
+        ui->btnMultable->animateClick(); // 乘号 (*)
+        break;
+    case Qt::Key_Slash:
+    case Qt::Key_division:
+        ui->btndivision->animateClick(); // 除号 (/)
+        break;
+    case Qt::Key_Enter:
+    case Qt::Key_Return:
+    case Qt::Key_Equal:
+        ui->btnequal->animateClick(); // 等号 (=, Enter, Return)
+        break;
+    case Qt::Key_Period:
+    case Qt::Key_Comma:
+        on_btnPoint_clicked(); // 小数点
+        break;
+    case Qt::Key_Backspace:
+        on_btnDelete_clicked(); // 退格键
+        break;
+    case Qt::Key_Escape:
+        on_C_clicked(); // ESC 键清空
+        break;
+    default:
+        QMainWindow::keyPressEvent(event); // 其他按键交给父类处理
+        break;
+    }
     // if(event -> key() == Qt::Key_0)
     //     ui->btnNum0->animateClick();
     // else if (event -> key() == Qt::Key_1)
@@ -227,4 +269,15 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 }
 
+
+
+void MainWindow::on_CE_clicked()
+{
+    // 1. 清空所有与计算相关的变量/栈，彻底重置状态
+    operand.clear();       // 清空当前输入的操作数（如“3”）
+
+    // 2. 清零后显示“0”（符合计算器常规逻辑，而非空白）
+    operand = "0";         // 将当前操作数设为“0”，方便后续输入（如输入“3”时会自动覆盖“0”）
+    ui->display->setText(operand);
+}
 

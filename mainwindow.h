@@ -47,6 +47,8 @@ private slots:
 
     virtual void keyPressEvent(QKeyEvent *event);
 
+    void on_CE_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
