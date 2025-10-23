@@ -122,7 +122,13 @@ void MainWindow::on_btnDelete_clicked()
 
 void MainWindow::on_C_clicked()
 {
-    operand.clear();
+    // 1. 清空所有与计算相关的变量/栈，彻底重置状态
+    operand.clear();       // 清空当前输入的操作数（如“3”）
+    operands.clear();      // 清空历史操作数栈（关键：清除上次残留的“2”）
+    opcodes.clear();       // 清空运算符栈（避免残留运算符干扰）
+
+    // 2. 清零后显示“0”（符合计算器常规逻辑，而非空白）
+    operand = "0";         // 将当前操作数设为“0”，方便后续输入（如输入“3”时会自动覆盖“0”）
     ui->display->setText(operand);
 }
 
