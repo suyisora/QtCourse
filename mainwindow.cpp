@@ -100,7 +100,6 @@ void MainWindow::btnNumClicked()
 
     operand += digit;
     ui->display->setText(operand);
-
 }
 
 
