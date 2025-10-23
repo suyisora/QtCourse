@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <math.h>
 
+//更新尝试
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
