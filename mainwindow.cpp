@@ -154,7 +154,8 @@ void MainWindow::btnUnaryOperatorClicked()
 {
     if(operand != ""){
         double result = operand.toDouble();
-        operand = "";
+        // operand = "";
+
 
         QString op = qobject_cast<QPushButton*>(sender())->text();
 
@@ -167,11 +168,12 @@ void MainWindow::btnUnaryOperatorClicked()
         }else if(op == "√"){
             result = sqrt(result);
         }else if(op == "+/-"){
-            if(result > 0) result = -result;
-            else result = +result;
+            result = -result; // 简化相反数逻辑
         }
 
-        ui->display->setText(QString::number(result));
+        // 将计算结果存入operand，而非仅显示
+        operand = QString::number(result);
+        ui->display->setText(operand);
     }
 
 }
