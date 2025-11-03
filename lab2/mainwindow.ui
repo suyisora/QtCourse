@@ -28,6 +28,7 @@
      <string>文件(&amp;F)</string>
     </property>
     <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
    </widget>
    <widget class="QMenu" name="menu_E">
     <property name="title">
@@ -72,7 +73,7 @@
   <action name="actionNew">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/qt/img/create_new_folder_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/qt/img/create_new_folder_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+     <normaloff>:/img/create_new_folder_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/create_new_folder_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
    </property>
    <property name="text">
     <string>新建(&amp;N)</string>
@@ -88,6 +89,10 @@
    </property>
   </action>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/file_open_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/file_open_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>打开(&amp;O)</string>
    </property>

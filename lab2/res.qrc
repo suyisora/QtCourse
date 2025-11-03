@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>../../../qt/img/create_new_folder_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</file>
+        <file>../img/create_new_folder_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</file>
+        <file>../img/file_open_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</file>
     </qresource>
 </RCC>
