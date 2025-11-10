@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -107,6 +107,10 @@
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/save_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/save_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>保存(&amp;S)</string>
    </property>
@@ -121,6 +125,10 @@
    </property>
   </action>
   <action name="actionSaveAs">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/save_as_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/save_as_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>另存为(&amp;A)</string>
    </property>
@@ -132,6 +140,10 @@
    </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/exit_to_app_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/exit_to_app_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>退出(&amp;X)</string>
    </property>
@@ -143,6 +155,10 @@
    </property>
   </action>
   <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/undo_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/undo_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>撤销(&amp;U)</string>
    </property>
@@ -157,6 +173,10 @@
    </property>
   </action>
   <action name="actionCut">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/content_cut_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/content_cut_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>剪切(&amp;T)</string>
    </property>
@@ -171,6 +191,10 @@
    </property>
   </action>
   <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/content_copy_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/content_copy_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>复制(&amp;C)</string>
    </property>
@@ -185,6 +209,10 @@
    </property>
   </action>
   <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/content_paste_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/content_paste_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>粘贴(&amp;P)</string>
    </property>
@@ -199,6 +227,10 @@
    </property>
   </action>
   <action name="actionFind">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/find_in_page_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/find_in_page_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>查找(&amp;F)</string>
    </property>
@@ -213,6 +245,10 @@
    </property>
   </action>
   <action name="actionReplace">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/find_replace_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/find_replace_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>替换(&amp;R)</string>
    </property>
@@ -227,6 +263,10 @@
    </property>
   </action>
   <action name="actionFont">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/font_download_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/font_download_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>字体(&amp;F)</string>
    </property>
@@ -241,6 +281,10 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/wrap_text_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/wrap_text_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>自动换行(&amp;W)</string>
    </property>
@@ -254,6 +298,10 @@
   <action name="actionToolBar">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/toolbar_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/toolbar_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
    </property>
    <property name="text">
     <string>工具栏(&amp;T)</string>
@@ -280,6 +328,10 @@
    </property>
   </action>
   <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/redo_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/redo_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>恢复(&amp;)</string>
    </property>
@@ -294,6 +346,10 @@
    </property>
   </action>
   <action name="actionSelectAll">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/select_all_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/select_all_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>全选(&amp;A)</string>
    </property>
@@ -308,6 +364,10 @@
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/info_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/info_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>关于(&amp;A)</string>
    </property>
@@ -319,6 +379,10 @@
    </property>
   </action>
   <action name="actionLineNumber">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/numbers_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/numbers_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>显示行号(&amp;L)</string>
    </property>
@@ -333,6 +397,10 @@
    </property>
   </action>
   <action name="actionFontColor">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/format_color_text_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/format_color_text_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>字体颜色</string>
    </property>
@@ -344,6 +412,10 @@
    </property>
   </action>
   <action name="actionEditorColor">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/palette_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/palette_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>编辑器背景色</string>
    </property>
@@ -355,6 +427,10 @@
    </property>
   </action>
   <action name="actionBackgroundColor">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/format_color_fill_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/img/format_color_fill_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png</iconset>
+   </property>
    <property name="text">
     <string>字体背景色</string>
    </property>
