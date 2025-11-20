@@ -46,6 +46,10 @@ MainWindow::MainWindow(QWidget *parent)
     }
     ui->actionStatusBar->setChecked(true);
     ui->actionToolBar->setChecked(true);
+    ui->actionLineNumber->setChecked(false);
+    on_actionLineNumber_triggered(false);
+
+    //connect(ui->actionLineNumber, SIGNAL(triggered(bool)), ui->TextEdit, SLOT(hideLineNumberArea(bool)));
 }
 
 MainWindow::~MainWindow()
@@ -91,7 +95,7 @@ void MainWindow::on_actionOpen_triggered()
 {
     if(!userEditConfirmed())
         return;
-
+    ui->TextEdit->clear();
     QString filename = QFileDialog::getOpenFileName(this,"打开文件",".",tr("Text file (*.txt) ;; All (*.*)"));
     QFile file(filename);
 
@@ -287,7 +291,18 @@ void MainWindow::on_actionEditorColor_triggered()
 
 void MainWindow::on_actionBackgroundColor_triggered()
 {
+    QColor color = QColorDialog::getColor(Qt::yellow, this, "选择文字背景颜色");
+    if(color.isValid()){
+        QTextCharFormat format;
+        format.setBackground(color);
 
+        QTextCursor cursor = ui->TextEdit->textCursor();
+        if(!cursor.hasSelection()) {
+            cursor.setCharFormat(format);
+        } else {
+            cursor.mergeCharFormat(format);
+        }
+    }
 }
 
 
@@ -360,5 +375,12 @@ void MainWindow::on_TextEdit_cursorPositionChanged()
     flg ++;
     col = pos - flg;
     statusCursorLabel.setText("Ln: " + QString::number(ln + 1) + "      Col: " + QString::number(col + 1));
+}
+
+
+void MainWindow::on_actionLineNumber_triggered(bool checked)
+{
+    ui->TextEdit->hideLineNumberArea(!checked);
+    qDebug() << "行号显示状态:" << !checked << "复选框状态:" << checked;
 }
 
