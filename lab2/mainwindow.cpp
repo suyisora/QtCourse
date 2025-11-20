@@ -381,6 +381,6 @@ void MainWindow::on_TextEdit_cursorPositionChanged()
 void MainWindow::on_actionLineNumber_triggered(bool checked)
 {
     ui->TextEdit->hideLineNumberArea(!checked);
-    qDebug() << "行号显示状态:" << !checked << "复选框状态:" << checked;
+    //qDebug() << "行号显示状态:" << !checked << "复选框状态:" << checked;
 }
 
