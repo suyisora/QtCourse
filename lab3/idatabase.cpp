@@ -13,6 +13,27 @@ void IDatabase::ininDatabase()
 }
 
 
+QString IDatabase::userLogin(QString userName, QString password)
+{
+    QSqlQuery query;//查询出当前记录的所有字段
+    query.prepare("select username, password from user where username = :USER");
+    query.bindValue(":USER", userName);
+    query.exec();
+    if (query.first() && query.value("username").isValid()) {
+        QString passwd = query.value("password").toString();
+        if (passwd == password) {
+            return "loginOk";
+        } else {
+            qDebug() << "wrong password";
+            return "wrongPassword";
+
+        }
+    }else {
+            qDebug() << "no such user";
+            return "wrongUsername";
+    }
+}
+
 IDatabase::IDatabase(QObject *parent) : QObject(parent)
 {
     ininDatabase();

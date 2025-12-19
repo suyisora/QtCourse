@@ -16,6 +16,8 @@ public:
         return instance;
     }
 
+    QString userLogin(QString userName, QString pasword);
+
 
 
 private:
