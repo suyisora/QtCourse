@@ -2,6 +2,12 @@
 #define MASTERVIEW_H
 
 #include <QWidget>
+#include "loginview.h"
+#include "welcomeview.h"
+#include "doctorview.h"
+#include "departmentview.h"
+#include "patienteditview.h"
+#include "patientview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +23,29 @@ public:
     MasterView(QWidget *parent = nullptr);
     ~MasterView();
 
+public slots:
+    void goLoginView();
+    void goWelcomeView();
+    void goDoctorView();
+    void goDepartmentView();
+    void goPaitentView();
+    void goPaitentEditView();
+    void goPreviousView();
+
+private slots:
+    void on_btBack_clicked();
+
 private:
+    void pushWidgetToStackView(QWidget *widget);
+
     Ui::MasterView *ui;
+
+    WelcomeView *welcomeView;
+    DoctorView *doctorView;
+    PatientView *patientView;
+    DepartmentView *departmentView;
+    LoginView *loginView;
+    PatientEditView *patientEditView;
+
 };
 #endif // MASTERVIEW_H

@@ -29,6 +29,11 @@
    </item>
    <item>
     <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string>欢迎使用诊断测试系统</string>
      </property>
