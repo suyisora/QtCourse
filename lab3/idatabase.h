@@ -20,6 +20,11 @@ public:
     QString userLogin(QString userName, QString pasword);
 
     bool initPatientModel();
+    bool searchPatient(QString filter);
+    bool deleteCurrentPatient();
+    bool submitPatientEdit();
+    void revertPatientEdit();
+
     QSqlTableModel *patientTabModel; //数据模型
     QItemSelectionModel *thePatientSelection;//选择模型
 
