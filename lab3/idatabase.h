@@ -20,6 +20,7 @@ public:
     QString userLogin(QString userName, QString pasword);
 
     bool initPatientModel();
+    int addNewPatient();
     bool searchPatient(QString filter);
     bool deleteCurrentPatient();
     bool submitPatientEdit();
