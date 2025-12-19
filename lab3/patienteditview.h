@@ -2,6 +2,7 @@
 #define PATIENTEDITVIEW_H
 
 #include <QWidget>
+#include <QDataWidgetMapper>
 
 namespace Ui {
 class PatientEditView;
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::PatientEditView *ui;
+    QDataWidgetMapper *dataMapper;//数据映射
+
+
 };
 
 #endif // PATIENTEDITVIEW_H
