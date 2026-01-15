@@ -34,6 +34,9 @@ private slots:
 
     void on_actionImport_triggered();
 
+    void on_actionEdit_triggered();
+
+
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *m_model;//声明数据模型指针

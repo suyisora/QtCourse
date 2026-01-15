@@ -9,7 +9,7 @@ AddWindow::AddWindow(QWidget *parent)
     ui->setupUi(this);
 
     // 初始化下拉框选项
-    ui->comboCategory->addItems({"社交娱乐", "工作办公", "金融理财", "其他"});
+    ui->comboCategory->addItems({"社交娱乐", "工作办公", "其他"});
 }
 
 AddWindow::~AddWindow()
@@ -61,5 +61,17 @@ void AddWindow::on_btnCancel_clicked()
 {
     // 关闭窗口，返回 Rejected 状态
     reject();
+}
+
+void AddWindow::setData(const QString &category, const QString &site,
+                        const QString &user, const QString &pass, const QString &note)
+{
+    ui->comboCategory->setCurrentText(category);
+    ui->lineSite->setText(site);
+    ui->lineUser->setText(user);
+    ui->linePass->setText(pass); // 注意：这里传入的应该是解密后的明文
+    ui->lineNote->setText(note);
+
+    this->setWindowTitle("编辑账号信息"); // 修改窗口标题
 }
 

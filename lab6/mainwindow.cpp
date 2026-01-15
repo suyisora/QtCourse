@@ -419,3 +419,57 @@ void MainWindow::on_actionImport_triggered()
     }
 }
 
+
+void MainWindow::on_actionEdit_triggered()
+{
+    // 1. 获取当前选中的行索引
+    QModelIndexList selection = ui->tableViewAccounts->selectionModel()->selectedRows();
+
+    // 2. 检查是否选中了行
+    if (selection.isEmpty()) {
+        QMessageBox::warning(this, "提示", "请先单击选择要编辑的账号行！");
+        return;
+    }
+
+    // 3. 获取选中行的数据（取第一条选中的记录）
+    int row = selection.at(0).row();
+
+    // 从 Model 中提取数据（列索引需对应 initTableView 中的设置）
+    QString id       = m_model->index(row, 0).data().toString(); // ID 列
+    QString category = m_model->index(row, 1).data().toString();
+    QString site     = m_model->index(row, 2).data().toString();
+    QString user     = m_model->index(row, 3).data().toString();
+    QString encPass  = m_model->index(row, 4).data().toString(); // 加密密码
+    QString note     = m_model->index(row, 5).data().toString();
+
+    // 4. 解密密码以便用户编辑
+    QString plainPass = CryptoUtil::decrypt(encPass);
+
+    // 5. 弹出复用的窗口
+    AddWindow dlg(this);
+    dlg.setData(category, site, user, plainPass, note);
+
+    if (dlg.exec() == QDialog::Accepted) {
+        // 6. 获取修改后的数据并重新加密
+        QString newEncPass = CryptoUtil::encrypt(dlg.getPassword());
+
+        // 7. 更新数据库 (使用 QSqlQuery 执行 UPDATE)
+        QSqlQuery query;
+        query.prepare("UPDATE accounts SET category=:cat, site=:site, username=:user, "
+                      "enc_password=:pass, note=:note WHERE id=:id");
+        query.bindValue(":cat",  dlg.getCategory());
+        query.bindValue(":site", dlg.getSite());
+        query.bindValue(":user", dlg.getUser());
+        query.bindValue(":pass", newEncPass);
+        query.bindValue(":note", dlg.getNote());
+        query.bindValue(":id",   id);
+
+        if (query.exec()) {
+            m_model->select(); // 刷新界面
+            ui->statusbar->showMessage("账号信息更新成功！", 3000);
+        } else {
+            QMessageBox::critical(this, "错误", "更新失败：" + query.lastError().text());
+        }
+    }
+}
+
