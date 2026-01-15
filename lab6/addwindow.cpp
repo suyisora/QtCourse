@@ -10,6 +10,17 @@ AddWindow::AddWindow(QWidget *parent)
 
     // 初始化下拉框选项
     ui->comboCategory->addItems({"社交娱乐", "工作办公", "其他"});
+
+    // 连接 RadioButton 的 toggled 信号
+    connect(ui->rbtShow, &QRadioButton::toggled, this, [=](bool checked){
+        if (checked) {
+            // 勾选时：显示明文
+            ui->linePass->setEchoMode(QLineEdit::Normal);
+        } else {
+            // 取消勾选时：显示密文（星号）
+            ui->linePass->setEchoMode(QLineEdit::Password);
+        }
+    });
 }
 
 AddWindow::~AddWindow()
